@@ -133,20 +133,20 @@ app.delete(
   userController.ensureAuthenticated,
   userController.accountDelete
 );
-app.post("/signup", userController.signupPost);
-app.post("/login", userController.loginPost);
-app.post("/forgot", userController.forgotPost);
-app.post("/reset/:token", userController.resetPost);
+app.post("/api/signup", userController.signupPost);
+app.post("/api/login", userController.loginPost);
+app.post("/api/forgot", userController.forgotPost);
+app.post("/api/reset/:token", userController.resetPost);
 app.get(
-  "/unlink/:provider",
+  "/api/unlink/:provider",
   userController.ensureAuthenticated,
   userController.unlink
 );
 app.post("/auth/github", wrap(userController.authGithub));
 app.get("/auth/github/callback", userController.authGithubCallback);
 
-app.get("/companies", wrap(companyController.index));
-app.post("/companies", wrap(companyController.create));
+app.get("/api/companies", wrap(companyController.index));
+app.post("/api/companies", wrap(companyController.create));
 
 // React server rendering
 app.use(function(req, res) {
