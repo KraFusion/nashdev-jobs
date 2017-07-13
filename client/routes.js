@@ -8,6 +8,8 @@ import Signup from "./components/Account/Signup";
 import Profile from "./components/Account/Profile";
 import Forgot from "./components/Account/Forgot";
 import Reset from "./components/Account/Reset";
+import CompanyList from "./components/Companies/List";
+import CompanyForm from "./components/Companies/Form";
 
 export default function getRoutes(store) {
   const ensureAuthenticated = (nextState, replace) => {
@@ -58,6 +60,18 @@ export default function getRoutes(store) {
         onEnter={skipIfAuthenticated}
         onLeave={clearMessages}
       />
+
+      <Route
+        path="/companies"
+        component={CompanyList}
+        onLeave={clearMessages}
+      />
+      <Route
+        path="/companies/add"
+        component={CompanyForm}
+        onLeave={clearMessages}
+      />
+
       <Route path="*" component={NotFound} onLeave={clearMessages} />
     </Route>
   );
